@@ -1,4 +1,6 @@
-ORIENTATIONLOCK-UCR
-===================
+Orientation Lock Use Cases and Requirements
+===========================================
 
-Use cases and requirements for orientation lock in Web applications
+You can view the document [here](http://tobie.github.com/ORIENTATIONLOCK-UCR/index.html).
+
+Please file well-scoped issues and send pull requests directly on GitHub.
