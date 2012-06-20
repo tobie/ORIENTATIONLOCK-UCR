@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' lang='en'>
+  <head>
+    <meta charset='utf-8'/>
+    <title>Core Mobile Web Platform Level 1 Requirements</title>
+    <script class='remove'>
+      var respecConfig = {
+          specStatus: "unofficial"
+      ,   shortName:  "ORIENTATIONLOCK-UCR"
+      ,   editors: [
+                {   name:       "Tobie Langel"
+                ,   company:    "Facebook"
+                ,   companyURL: "http://facebook.com/" }
+          ]
+      ,   edDraftURI:   "http://tobie.github.com/ORIENTATIONLOCK-UCR/index.html"
+      ,   copyrightStart: 2012
+      ,   noIDLIn:      true
+      ,   wgPatentURI:  "XXX"
+      ,   isRecTrack:   false
+      ,   isNoTrack:    true
+      };
+    </script>
+    <script src='http://www.w3.org/Tools/respec/respec-w3c-common' class='remove' async></script>
+  </head>
+  <body>
+    <section id='sotd'>
+      <p>
+        Development of this document happens on <a href='https://github.com/tobie/ORIENTATIONLOCK-UCR'>GitHub</a>.
+        Please file <a href='https://github.com/tobie/ORIENTATIONLOCK-UCR/issues'>issues</a> and send
+        <a href='https://github.com/tobie/ORIENTATIONLOCK-UCR/pulls'>pull requests</a> directly on GitHub.
+      </p>
+    </section>
+    <section id='abstract'>
+      <p>This document describes uses cases and requirements for orientation locking.</p>
+    </section>
+    <section>
+      <h2>Introduction</h2>
+      <p>The combination of portable devices, touch screens (the hardware no longer defines top from bottom), and accelerometers makes it possible to design devices whose screen automatically rotates so that it is always horizontal. This lets the user pick whichever orientation he prefers and lets the viewport automatically adapt. Some developers have started using this to provide two different views of their application. For example, one that's centered around creating new content, and the other, more around bulk editing existing content.</p>
+      
+      <p>While autorotation is great for most use cases, there are a number of drawbacks. First and foremost, it assumes the user is standing or sitting up, as the viewport's orientation is decided by an accelerometer. Using such a device while lying on the side won't work: the content will always appear perpendicular to the viewer's eyes however it is rotated. This is why such devices are usually equipped with a system-level orientation lock.</p>
+      
+      <p>Another important drawback is that the automatic rotation of the screen may disrupt use flow. This is particularly true of games that use the accelerometer as a controller.</p>
+      
+      <p>Finally, autorotation also forces the developer to design his application with these two completely different display formats in mind. For some applications, this may be a significant burden for the developer or might yield a subpar experience for the user.</p>
+      
+      <p>This document aims to collect use cases and requirements in order to help determine what the best solution to these issues is.</p>
+    </section>
+    <section>
+      <h2>Use cases</h2>
+    </section>
+    <section>
+      <h2>Requirements</h2>
+    </section>
+  </body>
+</html>
