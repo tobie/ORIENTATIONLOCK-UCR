@@ -18,63 +18,68 @@
       ,   wgPatentURI:  "XXX"
       ,   isRecTrack:   false
       ,   isNoTrack:    true
+      ,   format:       'markdown'
       };
     </script>
     <script src='http://www.w3.org/Tools/respec/respec-w3c-common' class='remove' async></script>
   </head>
   <body>
     <section id='sotd'>
-      <p>
-        Development of this document happens on <a href='https://github.com/tobie/ORIENTATIONLOCK-UCR'>GitHub</a>.
-        Please file <a href='https://github.com/tobie/ORIENTATIONLOCK-UCR/issues'>issues</a> and send
-        <a href='https://github.com/tobie/ORIENTATIONLOCK-UCR/pulls'>pull requests</a> directly on GitHub.
-      </p>
+      Development of this document happens on [GitHub](https://github.com/tobie/ORIENTATIONLOCK-UCR). Please file [issues](https://github.com/tobie/ORIENTATIONLOCK-UCR/issues) and send [pull requests](https://github.com/tobie/ORIENTATIONLOCK-UCR/pulls) directly on GitHub.
     </section>
+    
     <section id='abstract'>
-      <p>This document describes uses cases and requirements for inhibiting the auto-rotation of content to accommodate changes in the physical position of the device. This is also often referred to as orientation locking.</p>
+      This document describes uses cases and requirements for inhibiting the auto-rotation of content to accommodate changes in the physical position of the device. This is also often referred to as orientation locking.
     </section>
-    <section>
-      <h2>Introduction</h2>
 
-	    <p>On mobile devices, orientation of the content is often changed automatically to accommodate whether the device is held horizontally or vertically. This can be an issue in two cases:</p>
-	
-	    <ul>
-	      <li>the content is only fit to be displayed in either of portrait or landscape modes (e.g. a full-screen video), or</li>
-		    <li>the auto-rotation itself is disruptive to user flow. This is particularly true for games which use the accelerometer as a controller.</li>
-	    </ul>  
+    Introduction
+    ============
+    
+    On mobile devices, orientation of the content is often changed automatically to accommodate whether the device is held horizontally or vertically. This can be an issue in two cases:
+    
+    * the content is only fit to be displayed in either of portrait or landscape modes (e.g. a full-screen video), or
+    * the auto-rotation itself is disruptive to user flow. This is particularly true for games which use the accelerometer as a controller.
+    
+    It is therefore necessary for certain applications to be able to inhibit auto-rotation of the content either in part or in total. 
+    
+    Out of scope
+    ------------
+    
+    Because auto-rotation usually relies on an accelerometer, it determines the device's orientation relative to the gravitational field of the Earth and not to the viewer. Using such a device while lying on the side won't work: the content will be displayed perpendicularly to the viewer. Being able to programmatically lock the screen in either orientation to mitigate this issue is out of scope and should be handled at the system level.   
+    
+    Use cases 
+    =========
+    
+    Building a Ball-in-a-maze puzzle
+    --------------------------------
+    
+    Ball-in-a-maze puzzles involve titling a labyrinth around in order to move a ball towards a goal (usually its center or a hole). This is pretty straightforward to transpose onto a mobile device equipped with an accelerometer: the output of the accelerometer are used to position the ball and move it along.
+    
+    In order to avoid disrupting game play, auto-rotation of the content must be completely inhibited for such game.  
+    
+    Game within a game experience
+    -----------------------------
+    
+    Jane plays an adventure game. The main content can accommodate both portrait and landscape mode. However, the game's flow is sometimes interrupted by small, short games, which enable Jane to unlock new parts of the main game. When that's the case and where appropriate, auto-rotation is inhibited and orientation locked to a particular mode to accommodate the needs of the smaller games. Once a smaller game is completed, auto-rotation is unlocked again and Jane can resume the main game holding her device the way she prefers.
+    
+    <p class=issue> This use case seriously broadens the scope of this document and could be dropped for now.</p>
+    
+    Building a public transport map
+    -------------------------------
+    
+    Joe is building a public transport map which citizens are used to see in `landscape` mode. Although he could display it smaller in portrait mode and use the rest of the screen estate to display related information, he doesn't have the budget to do that right now. In order to provide his users with the most meaningful experience given the budget and time constraints he is facing, he is able to signal to the User Agent that his application is best seen in `landscape` mode.   
 
-	    <p>It is therefore necessary for certain applications to be able to inhibit auto-rotation of the content either in part or in total.</p>
-	    <section>
-		    <h2>Out of scope</h2>
-		    <p>Because auto-rotation usually relies on an accelerometer, it determines the device's orientation relative to the gravitational field of the Earth and not to the viewer. Using such a device while lying on the side won't work: the content will be displayed perpendicularly to the viewer. Being able to programmatically lock the screen in either orientation to mitigate this issue is out of scope and should be handled at the system level.</p>
-	    </section>
-    </section>
-    <section>
-      <h2>Use cases</h2>
-      <section>
-        <h2>Building a Ball-in-a-maze puzzle</h2>
-        <p>Ball-in-a-maze puzzles involve titling a labyrinth around in order to move a ball towards a goal (usually its center or a hole). This is pretty straightforward to transpose onto a mobile device equipped with an accelerometer: the output of the accelerometer are used to position the ball and move it along.</p>
-        
-        <p>In order to avoid disrupting game play, auto-rotation of the content must be completely inhibited for such game.</p>
-      </section>
+    Requirements
+    ============
+    
+    It MUST be possible for an application to signal its preference to be run in either of `portrait` or `landscape` mode.
 
-      <section>
-        <h2>Game within a game experience</h2>
-        <p>Jane plays an adventure game. The main content can accommodate both portrait and landscape mode. However, the game's flow is sometimes interrupted by small, short games, which enable Jane to unlock new parts of the main game. When that's the case and where appropriate, auto-rotation is inhibited and orientation locked to a particular mode to accommodate the needs of the smaller games. Once a smaller game is completed, auto-rotation is unlocked again and Jane can resume the main game holding her device the way she prefers.</p>
-        <p class=issue> This use case seriously broadens the scope of this document and could be dropped for now.</p> 
-      </section>
-      <section>
-        <h2>Building a public transport map</h2>
-        <p>Joe is building a public transport map which citizens are used to see in <code>landscape</code> mode. Although he could display it smaller in portrait mode and use the rest of the screen estate to display related information, he doesn't have the budget to do that right now. In order to provide his users with the most meaningful experience given the budget and time constraints he is facing, he is able to signal to the User Agent that his application is best seen in <code>landscape</code> mode.</p>
-      </section>
-    </section>
-    <section>
-      <h2>Requirements</h2>
-      <p>It MUST be possible for an application to signal its preference to be run in either of <code>portrait</code> or <code>landscape</code> mode.</p>
-      <p>It MUST be possible for an application to completely inhibit auto-rotation so that even if the device is titled upside down, the document isn't rotated.</p>
-      <p>It MUST be possible for an application to dynamically lock screen orientation to either <code>portrait</code> or <code>landscape</code> mode. It must be possible for an application to then proceed to unlock it.</p>
-      <p class=issue>This requirement follows from the <a href="#game-within-a-game-experience">Game within a game experience use case</a> which broadens the scope of this document. This could be dropped for now.</p> 
-      <p class=issue>Should an application be aware that auto-rotation is inhibited?</p>      
-    </section>
+    It MUST be possible for an application to completely inhibit auto-rotation so that even if the device is titled upside down, the document isn't rotated.
+
+    It MUST be possible for an application to dynamically lock screen orientation to either `portrait` or `landscape` mode. It must be possible for an application to then proceed to unlock it.
+    
+    <p class=issue>This requirement follows from the [Game within a game experience use case](#game-within-a-game-experience) which broadens the scope of this document. This could be dropped for now.</p>
+    
+    <p class=issue>Should an application be aware that auto-rotation is inhibited?</p>
   </body>
 </html>
